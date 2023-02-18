@@ -4,17 +4,17 @@ const app = express();
 const PORT = 3000;
 
 const db = require('./database/connection');
-
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
-    console.log("Connected successfully")
-})
+db()
+// db.on("error", console.error.bind(console, "connection error: "));
+// db.once("open", function () {
+//     console.log("Connected successfully")
+// })
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-const userRoute = require('./routes/user');
-const cohortRoute = require('./routes/cohort');
+const userRoute = require('./routes/user.js');
+const cohortRoute = require('./routes/cohort.js');
 
 app.use('/user', userRoute)
 app.use('/cohort', cohortRoute)

@@ -1,18 +1,18 @@
 
 const mongoose = require('mongoose')
 
-
+console.log(process.env.MONGO_URL)
 
 const connectDB = async () => { 
     try { 
-        const connection = await mongoose.connect(process.env.MONGO_URL,{
+        await mongoose.connect("mongodb+srv://garretthutson:CodeClimb99@cluster0.ilxwjxc.mongodb.net/?retryWrites=true&w=majority",{
                // options for the connect method to parse the URI
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // sets the name of the DB that our collections are part of
     dbName: 'codeHort'
 })
-console.log(`MongoDB connected: ${connection.connection.host}`);
+// console.log(`MongoDB connected: ${connection.connection.host}`);
 
         } catch(err) { 
             console.log(err)
@@ -22,6 +22,5 @@ console.log(`MongoDB connected: ${connection.connection.host}`);
             //
         }
 
-//lol this is hillrious  we should do our whole project like this
 
 module.exports = connectDB;

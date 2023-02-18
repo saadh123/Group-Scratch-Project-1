@@ -4,20 +4,6 @@ export default function(){
 const [data,setData] = useState()
 
 
-useEffect(()=>{
- async function getData(){
-    const URL = "https://api.nasa.gov/planetary/apod?api_key=1P1b8Piz7bF1EEcYrkHoCJBmsSZXKVjmHwuHOZFd";
-   
-    let res = await fetch(URL,
-        {
-        method: 'GET'
-    })
-    res = await res.json();
-    console.log(res) 
-    setData(res);
- }
- getData();
-},[])
 
 if(!data)return <div>loading</div>
 return( 
